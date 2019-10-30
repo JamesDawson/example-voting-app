@@ -1,0 +1,33 @@
+format_version: 3
+pipelines:
+  voting-app:
+    group: voting-system
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    materials:
+      git:
+        git: https://github.com/JamesDawson/example-voting-app
+        shallow_clone: false
+        auto_update: true
+        branch: master
+    stages:
+    - build-images:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: false
+        jobs:
+          build-vote-app:
+            timeout: 0
+            tasks:
+            - exec:
+                arguments:
+                - build
+                - -t
+                - voting-app
+                - ./vote
+                command: docker
+                run_if: passed
