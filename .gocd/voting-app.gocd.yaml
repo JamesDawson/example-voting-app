@@ -22,13 +22,21 @@ pipelines:
         jobs:
           build-vote-app:
             timeout: 0
-            elastic_profile_id: docker
+            # elastic_profile_id: docker
             tasks:
             - exec:
-                arguments:
-                - build
-                - -t
-                - voting-app
-                - ./vote
-                command: docker
-                run_if: passed
+              arguments:
+              - build
+              - -t
+              - voting-app
+              - ./vote
+              command: docker
+              run_if: passed
+            # - exec:
+            #     arguments:
+            #     - build
+            #     - -t
+            #     - voting-app
+            #     - ./vote
+            #     command: docker
+            #     run_if: passed
