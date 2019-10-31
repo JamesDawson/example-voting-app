@@ -25,12 +25,7 @@ pipelines:
             # elastic_profile_id: docker
             tasks:
             - exec:
-              arguments:
-              - build
-              - -t
-              - voting-app
-              - ./vote
-              command: docker
+              command: tree
               run_if: passed
             # - exec:
             #     arguments:
