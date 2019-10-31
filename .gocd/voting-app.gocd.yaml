@@ -32,3 +32,27 @@ pipelines:
                 - ./vote
                 command: docker
                 run_if: passed
+          build-result-app:
+            timeout: 0
+            elastic_profile_id: ansible
+            tasks:
+            - exec:
+                arguments:
+                - build
+                - -t
+                - result-app
+                - ./result
+                command: docker
+                run_if: passed
+          build-worker-app:
+            timeout: 0
+            elastic_profile_id: ansible
+            tasks:
+            - exec:
+                arguments:
+                - build
+                - -t
+                - vote-worker
+                - ./worker
+                command: docker
+                run_if: passed
