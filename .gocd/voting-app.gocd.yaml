@@ -15,13 +15,14 @@ pipelines:
     - build-images:
         fetch_materials: true
         keep_artifacts: false
-        clean_workspace: false
+        clean_workspace: true
         approval:
           type: success
           allow_only_on_success: false
         jobs:
           build-vote-app:
             timeout: 0
+            elastic_profile_id: alpine
             tasks:
             - exec:
                 arguments:
