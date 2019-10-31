@@ -10,7 +10,7 @@ pipelines:
         git: https://github.com/JamesDawson/example-voting-app
         shallow_clone: false
         auto_update: true
-        branch: master
+        branch: feature/gocd
     stages:
     - build-images:
         fetch_materials: true
